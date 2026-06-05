@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X Cleaner</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 16px;
+        width: 240px;
+      }
+
+      h1 {
+        font-size: 16px;
+        margin: 0 0 12px;
+      }
+
+      label {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin: 8px 0;
+      }
+
+      small {
+        color: #555;
+        display: block;
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>X Cleaner</h1>
+
+    <label>
+      <input id="enabled" type="checkbox" />
+      Enable extension
+    </label>
+
+    <label>
+      <input id="hidePromoted" type="checkbox" />
+      Hide promoted posts
+    </label>
+
+    <label>
+      <input id="hideWhoToFollow" type="checkbox" />
+      Hide “Who to follow”
+    </label>
+
+    <label>
+      <input id="hideTrends" type="checkbox" />
+      Hide trends modules
+    </label>
+
+    <label>
+      <input id="debugMode" type="checkbox" />
+      Debug mode
+    </label>
+
+    <small>Debug mode marks candidates instead of hiding them, so you can inspect why they matched.</small>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

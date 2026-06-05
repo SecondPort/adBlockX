@@ -1,0 +1,21 @@
+[data-x-cleaner-hidden="true"] {
+  display: none !important;
+}
+
+[data-x-cleaner-debug] {
+  outline: 2px dashed #ff7a00 !important;
+  outline-offset: 2px !important;
+  position: relative !important;
+}
+
+[data-x-cleaner-debug]::before {
+  content: "X Cleaner: " attr(data-x-cleaner-debug) " | " attr(data-x-cleaner-debug-details);
+  display: block;
+  background: rgba(255, 122, 0, 0.95);
+  color: #111;
+  font: 12px/1.4 Arial, sans-serif;
+  padding: 4px 6px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  word-break: break-word;
+}
