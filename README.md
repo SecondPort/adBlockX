@@ -4,8 +4,10 @@ Una extensión ligera para Chrome / Chromium que oculta promociones y módulos m
 
 ## Características
 
-- Oculta publicaciones promocionadas en el feed
-- Permite desactivar sugerencias de "A quién seguir" y el panel de tendencias/sidebar
+- Oculta publicaciones promocionadas con una heurística más robusta basada en múltiples señales DOM
+- Permite ajustar la sensibilidad del detector desde el popup
+- Puede desactivar sugerencias de "A quién seguir" y el panel de tendencias/sidebar
+- Incluye modo debug con badge en vivo y explicación de por qué un bloque fue marcado
 - Usa permisos mínimos: `storage` y permisos de host solo para `x.com` / `twitter.com`
 - Basada en filtrado DOM, sin bloquear tráfico de red
 
@@ -14,6 +16,7 @@ Una extensión ligera para Chrome / Chromium que oculta promociones y módulos m
 - Chrome, Chromium o Microsoft Edge con soporte para extensiones MV3
 - Navegador actualizado
 - Acceso a `chrome://extensions` (o `edge://extensions` en Edge)
+- Node.js reciente si quieres ejecutar las pruebas locales
 
 ## Instalación
 
@@ -30,6 +33,7 @@ Una extensión ligera para Chrome / Chromium que oculta promociones y módulos m
 1. Navega a `https://x.com/` o `https://twitter.com/`.
 2. La extensión se activa automáticamente con el contenido de la página.
 3. Si quieres cambiar opciones, abre el icono de la extensión y usa el popup.
+4. Si X cambia su markup, activa `Debug mode` para inspeccionar las señales detectadas.
 
 ## Permisos
 
@@ -40,14 +44,24 @@ Esta extensión solicita solo los permisos necesarios:
 
 ## Cómo funciona
 
-- `content.js` detecta y oculta elementos promocionados dentro del DOM
-- `content.css` aplica reglas de estilo para limpiar el diseño
+- `x-cleaner-core.js` centraliza reglas, settings y heurísticas reutilizables
+- `content.js` detecta promociones, procesa el feed y actualiza el panel de debug
+- `content.css` aplica reglas de estilo para ocultar o marcar elementos
+- `popup.js` y `popup.html` exponen opciones y sensibilidad del detector
 - El filtrado es heurístico, por lo que puede requerir ajustes si X cambia su interfaz
+
+## Pruebas
+
+Ejecuta la suite básica de regresión con:
+
+```bash
+node --test x-cleaner-core.test.js
+```
 
 ## Notas
 
 - No es un bloqueador de anuncios de red completo; funciona sobre el DOM de la página
-- Si X cambia su estructura de HTML, puede ser necesario actualizar los selectores
+- Si X cambia su estructura de HTML, puede ser necesario actualizar selectores o señales
 - Usa este proyecto como base y adáptalo a tus necesidades
 
 ## Contribuciones
@@ -57,4 +71,3 @@ Las mejoras son bienvenidas. Si quieres colaborar:
 - Abre un issue para proponer cambios
 - Envía un pull request con tu corrección
 - Revisa que el comportamiento siga siendo compatible con MV3
-

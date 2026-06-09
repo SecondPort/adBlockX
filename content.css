@@ -19,3 +19,17 @@
   border-radius: 6px;
   word-break: break-word;
 }
+
+#x-cleaner-debug-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483647;
+  background: rgba(17, 17, 17, 0.92);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 999px;
+  font: 12px/1.3 Arial, sans-serif;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+}

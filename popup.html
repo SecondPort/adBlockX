@@ -9,7 +9,7 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 16px;
-        width: 240px;
+        width: 260px;
       }
 
       h1 {
@@ -22,6 +22,20 @@
         gap: 8px;
         align-items: center;
         margin: 8px 0;
+      }
+
+      .stack {
+        display: grid;
+        gap: 4px;
+        margin-top: 12px;
+      }
+
+      .stack label {
+        margin: 0;
+      }
+
+      input[type='range'] {
+        width: 100%;
       }
 
       small {
@@ -54,13 +68,21 @@
       Hide trends modules
     </label>
 
+    <div class="stack">
+      <label for="promotedScoreThreshold">Promoted sensitivity: <strong id="promotedScoreThresholdValue">6</strong></label>
+      <input id="promotedScoreThreshold" type="range" min="4" max="10" step="1" />
+    </div>
+
     <label>
       <input id="debugMode" type="checkbox" />
       Debug mode
     </label>
 
-    <small>Debug mode marks candidates instead of hiding them, so you can inspect why they matched.</small>
+    <small>
+      Debug mode shows match reasons and a live badge inside X instead of hiding matching elements.
+    </small>
 
+    <script src="x-cleaner-core.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>

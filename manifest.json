@@ -1,14 +1,14 @@
 {
   "manifest_version": 3,
   "name": "X Cleaner",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Hide promoted posts and noisy sidebar modules on X/Twitter.",
   "permissions": ["storage"],
   "host_permissions": ["https://x.com/*", "https://twitter.com/*"],
   "content_scripts": [
     {
       "matches": ["https://x.com/*", "https://twitter.com/*"],
-      "js": ["content.js"],
+      "js": ["x-cleaner-core.js", "content.js"],
       "css": ["content.css"],
       "run_at": "document_idle"
     }
