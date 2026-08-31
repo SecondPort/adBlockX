@@ -359,6 +359,18 @@ function processTimelineCard(card) {
     settings.hidePromoted &&
     shouldHidePromotedFromSignals(signals, settings.promotedScoreThreshold)
   ) {
+    console.warn('[x-cleaner] hiding tweet', {
+      text: signals.text.slice(0, 120),
+      score: signals.score,
+      threshold: settings.promotedScoreThreshold,
+      promotedLabelHits: signals.promotedLabelHits,
+      structuralSponsoredBadge: signals.structuralSponsoredBadge,
+      hasSponsoredBadge: signals.hasSponsoredBadge,
+      adLinks: signals.adLinks,
+      placementTrackingHits: signals.placementTrackingHits,
+      hasMenu: signals.hasMenu,
+      hasSocialActions: signals.hasSocialActions
+    });
     setDebugDetails(card, 'promoted-match', promotedDetails);
     if (hideElement(card, 'promoted')) {
       debugStats.hiddenPromoted += 1;
